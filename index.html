@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f3f0e8">
+  <title>啥也不是 — 私人收藏室</title>
+  <meta name="description" content="没什么特别的，只是想留下些什么。一个关于书、游戏、音乐、影像与日常的私人收藏室。">
+  <style>
+    :root {
+      --paper: #f3f0e8;
+      --paper-deep: #e9e4d9;
+      --ink: #292923;
+      --muted: #77766d;
+      --line: #d8d2c5;
+      --accent: #8a6254;
+      --serif: "Songti SC", "Noto Serif CJK SC", "STSong", Georgia, serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 12% 5%, rgba(255,255,255,.75), transparent 32rem),
+        var(--paper);
+      font-family: var(--sans);
+      line-height: 1.75;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1080px, calc(100% - 48px)); margin: 0 auto; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 24px 0; border-bottom: 1px solid var(--line);
+    }
+    .brand { font-family: var(--serif); font-size: 19px; letter-spacing: .12em; }
+    .brand small { display: block; color: var(--muted); font: 10px var(--sans); letter-spacing: .22em; margin-top: 1px; }
+    nav { display: flex; gap: 22px; color: var(--muted); font-size: 12px; }
+    nav a:hover, nav a:focus { color: var(--accent); }
+    .hero {
+      min-height: 390px; display: grid; grid-template-columns: 1.2fr .8fr;
+      align-items: center; gap: 42px; padding: 76px 0 70px;
+    }
+    .eyebrow { color: var(--accent); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; }
+    h1 {
+      font: 400 clamp(48px, 8vw, 88px)/1.18 var(--serif);
+      letter-spacing: .04em; margin: 18px 0 14px;
+    }
+    .subtitle { color: var(--muted); font: 16px var(--serif); letter-spacing: .08em; }
+    .hero-note {
+      justify-self: end; width: min(290px, 100%); padding: 26px 24px;
+      border: 1px solid var(--line); background: rgba(255,255,255,.22);
+      transform: rotate(1.5deg);
+    }
+    .hero-note .mark { color: var(--accent); font: 34px var(--serif); }
+    .hero-note p { color: var(--muted); font: 13px/2 var(--serif); margin: 12px 0 0; }
+    .hero-note span { display: block; margin-top: 18px; color: var(--muted); font-size: 10px; letter-spacing: .18em; }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: end;
+      padding: 26px 0 18px; border-top: 1px solid var(--line);
+    }
+    h2 { margin: 0; font: 400 28px var(--serif); letter-spacing: .08em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 11px; }
+    .intro { max-width: 610px; color: var(--muted); font: 14px/2 var(--serif); margin: 0 0 34px; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 22px; }
+    .filter {
+      border: 1px solid var(--line); background: transparent; color: var(--muted);
+      border-radius: 99px; padding: 5px 14px; cursor: pointer; font-size: 11px;
+    }
+    .filter.active, .filter:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card {
+      min-height: 180px; padding: 20px; border: 1px solid var(--line);
+      background: rgba(255,255,255,.25); display: flex; flex-direction: column;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .card:hover { transform: translateY(-3px); background: rgba(255,255,255,.55); }
+    .card-top { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; letter-spacing: .1em; }
+    .card h3 { font: 400 21px var(--serif); margin: 24px 0 7px; }
+    .card p { color: var(--muted); font-size: 12px; margin: 0; }
+    .tag { margin-top: auto; padding-top: 18px; color: var(--accent); font-size: 10px; }
+    .empty { color: var(--muted); font: 13px var(--serif); padding: 26px 0; }
+    .about {
+      display: grid; grid-template-columns: .7fr 1.3fr; gap: 38px;
+      padding: 58px 0; margin-top: 70px; border-top: 1px solid var(--line);
+    }
+    .about-label { color: var(--accent); font-size: 10px; letter-spacing: .2em; }
+    .about h2 { margin-top: 12px; }
+    .about p { margin: 0; max-width: 600px; color: var(--muted); font: 15px/2.1 var(--serif); }
+    footer {
+      border-top: 1px solid var(--line); padding: 22px 0 34px;
+      display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; letter-spacing: .08em;
+    }
+    @media (max-width: 700px) {
+      .wrap { width: min(100% - 32px, 560px); }
+      header { align-items: flex-start; gap: 16px; }
+      nav { max-width: 210px; justify-content: flex-end; flex-wrap: wrap; gap: 8px 14px; }
+      .hero { min-height: auto; grid-template-columns: 1fr; gap: 30px; padding: 62px 0 48px; }
+      .hero-note { justify-self: start; margin-left: 12%; }
+      .grid { grid-template-columns: 1fr; }
+      .card { min-height: 150px; }
+      .about { grid-template-columns: 1fr; gap: 18px; margin-top: 48px; }
+      footer { gap: 12px; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <a class="brand" href="#top">啥也不是<small>NOTHING IN PARTICULAR</small></a>
+      <nav aria-label="主导航">
+        <a href="#collection">收藏</a>
+        <a href="#about">关于</a>
+        <a href="#notes">随手记</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div>
+          <div class="eyebrow">A SMALL PERSONAL ARCHIVE · 2026</div>
+          <h1>啥也不是</h1>
+          <div class="subtitle">没什么特别的，只是想留下些什么。</div>
+        </div>
+        <aside class="hero-note">
+          <div class="mark">「　」</div>
+          <p>把喜欢的东西放在这里。<br>书、游戏、音乐、影像，<br>还有偶尔出现的念头。</p>
+          <span>随意收集，不必完整。</span>
+        </aside>
+      </section>
+
+      <section id="collection">
+        <div class="section-head">
+          <div><div class="eyebrow">THE COLLECTION</div><h2>一些收藏</h2></div>
+          <p>01 — 05 / ARCHIVE</p>
+        </div>
+        <p class="intro">这里暂时还是空的。以后遇到喜欢的作品，就把它们放进来。点击分类，可以筛选不同的收藏。</p>
+        <div class="filters" role="group" aria-label="收藏分类">
+          <button class="filter active" data-filter="all">全部</button>
+          <button class="filter" data-filter="书籍">书籍</button>
+          <button class="filter" data-filter="游戏">游戏</button>
+          <button class="filter" data-filter="音乐">音乐</button>
+          <button class="filter" data-filter="影像">影像</button>
+          <button class="filter" data-filter="其他">其他</button>
+        </div>
+        <div class="grid" id="cards">
+          <article class="card" data-category="书籍">
+            <div class="card-top"><span>BOOKS / 001</span><span>—</span></div>
+            <h3>一本想留下的书</h3><p>写下它打动你的地方。</p><div class="tag">书籍 · 待填写</div>
+          </article>
+          <article class="card" data-category="游戏">
+            <div class="card-top"><span>GAMES / 001</span><span>—</span></div>
+            <h3>一个记得很久的游戏</h3><p>记录游戏、体验与片段。</p><div class="tag">游戏 · 待填写</div>
+          </article>
+          <article class="card" data-category="音乐">
+            <div class="card-top"><span>MUSIC / 001</span><span>—</span></div>
+            <h3>最近常听的声音</h3><p>专辑、歌曲，或某个瞬间。</p><div class="tag">音乐 · 待填写</div>
+          </article>
+          <article class="card" data-category="影像">
+            <div class="card-top"><span>IMAGES / 001</span><span>—</span></div>
+            <h3>一段想保存的影像</h3><p>电影、动画、摄影都可以。</p><div class="tag">影像 · 待填写</div>
+          </article>
+          <article class="card" data-category="其他">
+            <div class="card-top"><span>FRAGMENTS / 001</span><span>—</span></div>
+            <h3>一些零碎的念头</h3><p>不需要分类，也不必解释。</p><div class="tag">其他 · 待填写</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about" id="about">
+        <div><div class="about-label">ABOUT THIS PLACE</div><h2>关于这里</h2></div>
+        <p>这是一个私人收藏室。没有明确主题，也不追求更新频率。只是想给喜欢的东西留一个位置，也给某些转瞬即逝的想法留一点空间。</p>
+      </section>
+
+      <section id="notes">
+        <div class="section-head">
+          <div><div class="eyebrow">NOTES / FRAGMENTS</div><h2>随手记</h2></div>
+          <p>WRITE WHENEVER</p>
+        </div>
+        <p class="intro">以后可以在这里放短随笔、读书笔记、生活片段，或者任何暂时不想归类的内容。</p>
+      </section>
+    </main>
+
+    <footer>
+      <span>啥也不是　/　私人收藏室</span>
+      <span>MADE SLOWLY · UPDATED WHENEVER</span>
+    </footer>
+  </div>
+  <script>
+    const buttons = document.querySelectorAll(".filter");
+    const cards = document.querySelectorAll(".card");
+    buttons.forEach(button => {
+      button.addEventListener("click", () => {
+        buttons.forEach(item => item.classList.remove("active"));
+        button.classList.add("active");
+        const selected = button.dataset.filter;
+        cards.forEach(card => {
+          card.hidden = selected !== "all" && card.dataset.category !== selected;
+        });
+      });
+    });
+  </script>
+</body>
+</html>
