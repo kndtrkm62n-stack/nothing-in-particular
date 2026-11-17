@@ -71,6 +71,14 @@
     }
     .filter.active, .filter:hover { color: var(--paper); background: var(--ink); border-color: var(--ink); }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card-link { display: block; color: inherit; }
+    .card.has-cover { padding: 0; overflow: hidden; }
+    .card-cover {
+      display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover;
+      border-bottom: 1px solid var(--line); background: var(--paper-deep);
+    }
+    .card-content { min-height: 165px; padding: 17px 20px 20px; display: flex; flex-direction: column; }
+    .card-link:hover h3 { color: var(--accent); }
     .card {
       min-height: 180px; padding: 20px; border: 1px solid var(--line);
       background: rgba(255,255,255,.25); display: flex; flex-direction: column;
@@ -136,7 +144,7 @@
           <div><div class="eyebrow">THE COLLECTION</div><h2>一些收藏</h2></div>
           <p>01 — 05 / ARCHIVE</p>
         </div>
-        <p class="intro">这里暂时还是空的。以后遇到喜欢的作品，就把它们放进来。点击分类，可以筛选不同的收藏。</p>
+        <p class="intro">把喜欢的作品放在这里。点击分类筛选收藏；点击带有封面的卡片，可以进入作品详情。</p>
         <div class="filters" role="group" aria-label="收藏分类">
           <button class="filter active" data-filter="all">全部</button>
           <button class="filter" data-filter="书籍">书籍</button>
@@ -150,9 +158,18 @@
             <div class="card-top"><span>BOOKS / 001</span><span>—</span></div>
             <h3>一本想留下的书</h3><p>写下它打动你的地方。</p><div class="tag">书籍 · 待填写</div>
           </article>
-          <article class="card" data-category="游戏">
-            <div class="card-top"><span>GAMES / 001</span><span>—</span></div>
-            <h3>一个记得很久的游戏</h3><p>记录游戏、体验与片段。</p><div class="tag">游戏 · 待填写</div>
+          <article class="card has-cover" data-category="游戏">
+            <a class="card-link" href="life-is-strange.html" aria-label="查看奇异人生收藏详情">
+              <img class="card-cover"
+                src="https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/319630/header.jpg?t=1772725755"
+                alt="《奇异人生》游戏官方商店横幅封面">
+              <div class="card-content">
+                <div class="card-top"><span>GAMES / 001</span><span>2015</span></div>
+                <h3>奇异人生</h3>
+                <p>有些瞬间，值得被重新看见。</p>
+                <div class="tag">游戏 · 剧情冒险</div>
+              </div>
+            </a>
           </article>
           <article class="card" data-category="音乐">
             <div class="card-top"><span>MUSIC / 001</span><span>—</span></div>
